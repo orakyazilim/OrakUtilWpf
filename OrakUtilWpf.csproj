@@ -10,8 +10,9 @@
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>OrakUtilWpf</RootNamespace>
         <AssemblyName>OrakUtilWpf</AssemblyName>
-        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+        <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
+        <LangVersion>8</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +34,7 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="PresentationFramework" />
         <Reference Include="System"/>
         <Reference Include="System.Core"/>
         <Reference Include="System.Data"/>
@@ -40,6 +42,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Class1.cs"/>
+        <Compile Include="FiComponents\FiDataGridHelper.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
     <ItemGroup>
@@ -47,9 +50,6 @@
         <Project>{04d51c72-6b1a-4e0b-8e88-3ac5b4de94e6}</Project>
         <Name>OrakYazilimLib</Name>
       </ProjectReference>
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="FiComponents\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
