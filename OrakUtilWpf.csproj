@@ -34,15 +34,21 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="PresentationCore" />
         <Reference Include="PresentationFramework" />
         <Reference Include="System"/>
         <Reference Include="System.Core"/>
         <Reference Include="System.Data"/>
         <Reference Include="System.Xml"/>
+        <Reference Include="WindowsBase" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Class1.cs"/>
         <Compile Include="FiComponents\FiDataGridHelper.cs" />
+        <Compile Include="FiComponents\FiWpfForm.cs" />
+        <Compile Include="FiDataContainer\FiwCol.cs" />
+        <Compile Include="FiDataContainer\FwcList.cs" />
+        <Compile Include="FiWpfExtension\FiDataGridExt.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
     <ItemGroup>
