@@ -44,11 +44,13 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Class1.cs"/>
-        <Compile Include="FiComponents\FiDataGridHelper.cs" />
-        <Compile Include="FiComponents\FiWpfForm.cs" />
+        <Compile Include="FiComponents\MyGrid.cs" />
         <Compile Include="FiDataContainer\FiwCol.cs" />
         <Compile Include="FiDataContainer\FwcList.cs" />
         <Compile Include="FiWpfExtension\FiDataGridExt.cs" />
+        <Compile Include="OkwUtil\FiDataGridHelper.cs" />
+        <Compile Include="OkwUtil\FiEditorFct.cs" />
+        <Compile Include="OkwUtil\FiWpfForm.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
     <ItemGroup>

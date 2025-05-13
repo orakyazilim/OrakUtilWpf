@@ -27,11 +27,12 @@ namespace OrakUtilWpf.FiDataContainer
 
       return fwcList;
     }
-    public void AddByFiCol(FiCol fiCol)
+    public FiwCol AddByFiCol(FiCol fiCol)
     {
         FiwCol fiwCol = new FiwCol();
         fiwCol.refFiCol = fiCol;
         this.Add(fiwCol);
+        return fiwCol;
     }
   }
 }

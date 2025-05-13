@@ -15,6 +15,16 @@ namespace OrakUtilWpf.FiDataContainer
 
     public TextBox txbCol { get; set; }
 
+    public bool? boHiddenFormElem { get; set; }
+
+    /**
+    * Form Componentlerde alanın değeri
+    */
+    public object refValue { get; set; }
+
+
+    // Getters and Setters
+
     public TextBlock GetLblCol()
     {
       if (lblCol != null) return lblCol;
@@ -34,5 +44,10 @@ namespace OrakUtilWpf.FiDataContainer
       return txbCol;
     }
 
+    public FiwCol BuiBoHiddenFormElem(bool prhiddenFormElement)
+    {
+      this.boHiddenFormElem = prhiddenFormElement;
+      return this;
+    }
   }
 }
