@@ -44,6 +44,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Class1.cs"/>
+        <Compile Include="FiComponents\FormGrid.cs" />
         <Compile Include="FiComponents\MyGrid.cs" />
         <Compile Include="FiDataContainer\FiwCol.cs" />
         <Compile Include="FiDataContainer\FwcList.cs" />
