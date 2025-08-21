@@ -1,4 +1,5 @@
 ﻿using OrakUtilWpf.FiDataContainer;
+using OrakYazilimLib.Util.config;
 using OrakYazilimLib.Util.core;
 using System.Windows;
 using System.Windows.Controls;
@@ -6,7 +7,7 @@ using System.Windows.Media;
 
 namespace OrakUtilWpf.FiComponents
 {
-  public class FormGrid
+  public class FiFormGrid
   {
 
     public Grid gridForm { get; set; }
@@ -15,7 +16,7 @@ namespace OrakUtilWpf.FiComponents
 
     public FiKeybean fkbForm { get; set; }
 
-    public FormGrid()
+    public FiFormGrid()
     {
       // Yeni Grid nesnesi
       gridForm = new Grid()
@@ -43,12 +44,12 @@ namespace OrakUtilWpf.FiComponents
         return;
       }
 
-      foreach (FiwCol fclFormElement in fwcList)
+      foreach (FiwCol fiwCol in fwcList)
       {
 
-        if(FiBool.IsTrue(fclFormElement.boHiddenFormElem))
+        if(FiBool.IsTrue(fiwCol.boHiddenFormElem))
         {
-          fclFormElement.refValue = fkbForm.GetFieldAsObject(fclFormElement.refFiCol);
+          fiwCol.refValue = fkbForm.GetFieldAsObject(fiwCol.refFiCol);
           continue;
         }
 
@@ -61,11 +62,11 @@ namespace OrakUtilWpf.FiComponents
 
         int rowDefinitionsCount = this.gridForm.RowDefinitions.Count - 1;
         // Component Grid'e yerleştirme
-        TextBlock lbtField = fclFormElement.GetLblCol();
+        TextBlock lbtField = fiwCol.GenLblCompAsTxbl();
         Grid.SetRow(lbtField, rowDefinitionsCount); // Son eklenen satıra 1. içerik
         Grid.SetColumn(lbtField, 0); // İlk sütuna
 
-        TextBox txbField = fclFormElement.GetTxbCol(fkbForm);
+        FiTextBox txbField = fiwCol.GenTxbCol(fkbForm);
         txbField.HorizontalAlignment = HorizontalAlignment.Stretch;
         Grid.SetRow(txbField, rowDefinitionsCount); // Son eklenen satıra 1. içerik
         Grid.SetColumn(txbField, 1); // İlk sütuna
@@ -77,5 +78,16 @@ namespace OrakUtilWpf.FiComponents
     }
 
 
+    public FiKeybean GetFormAsFkb()
+    {
+      foreach (UIElement gridFormChild in this.gridForm.Children)
+      {
+        if (gridFormChild is FiTextBox txbField)
+        {
+          FiAppConfig.fiLog?.Debug(txbField.Name);
+        }
+      }
+      return fkbForm;
+    }
   }
 }

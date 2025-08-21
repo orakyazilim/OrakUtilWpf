@@ -1,4 +1,5 @@
-﻿using OrakYazilimLib.DbGeneric;
+﻿using OrakUtilWpf.FiComponents;
+using OrakYazilimLib.DbGeneric;
 using OrakYazilimLib.Util.core;
 using System.Windows.Controls;
 
@@ -13,7 +14,7 @@ namespace OrakUtilWpf.FiDataContainer
 
     public TextBlock lblCol { get; set; }
 
-    public TextBox txbCol { get; set; }
+    public FiTextBox txbCol { get; set; }
 
     public bool? boHiddenFormElem { get; set; }
 
@@ -25,7 +26,7 @@ namespace OrakUtilWpf.FiDataContainer
 
     // Getters and Setters
 
-    public TextBlock GetLblCol()
+    public TextBlock GenLblCompAsTxbl()
     {
       if (lblCol != null) return lblCol;
 
@@ -33,10 +34,10 @@ namespace OrakUtilWpf.FiDataContainer
       lblCol.Text = refFiCol.ofcTxHeader;
       return lblCol;
     }
-    public TextBox GetTxbCol(FiKeybean fkbItem)
+    public FiTextBox GenTxbCol(FiKeybean fkbItem)
     {
-      if(txbCol != null) return txbCol;
-      txbCol = new TextBox();
+      if(txbCol != null) return null;
+      txbCol = new FiTextBox();
       if (fkbItem != null)
       {
         txbCol.Text = fkbItem.GetFieldAsString(refFiCol);;
