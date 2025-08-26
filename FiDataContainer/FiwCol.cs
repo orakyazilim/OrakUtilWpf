@@ -12,7 +12,7 @@ namespace OrakUtilWpf.FiDataContainer
   {
     public FiCol refFiCol { get; set; }
 
-    public TextBlock lblCol { get; set; }
+    public FiLabel lblCol { get; set; }
 
     public FiTextBox txbCol { get; set; }
 
@@ -26,22 +26,23 @@ namespace OrakUtilWpf.FiDataContainer
 
     // Getters and Setters
 
-    public TextBlock GenLblCompAsTxbl()
+    public FiLabel GenLabel()
     {
-      if (lblCol != null) return lblCol;
+      //if (lblCol != null) return lblCol;
 
-      lblCol = new TextBlock();
+      lblCol = new FiLabel();
       lblCol.Text = refFiCol.ofcTxHeader;
       return lblCol;
     }
-    public FiTextBox GenTxbCol(FiKeybean fkbItem)
+    public FiTextBox GenTextBox(FiKeybean fkbForm)
     {
-      if(txbCol != null) return null;
+      // txbCol önceden üretilmişse onu getirir
+      //if(txbCol != null) return txbCol;
+
       txbCol = new FiTextBox();
-      if (fkbItem != null)
-      {
-        txbCol.Text = fkbItem.GetFieldAsString(refFiCol);;
-      }
+      if (fkbForm == null) return txbCol;
+
+      txbCol.Text = fkbForm.GetFieldAsString(refFiCol);;
       return txbCol;
     }
 

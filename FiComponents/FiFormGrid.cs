@@ -62,17 +62,17 @@ namespace OrakUtilWpf.FiComponents
 
         int rowDefinitionsCount = this.gridForm.RowDefinitions.Count - 1;
         // Component Grid'e yerleştirme
-        TextBlock lbtField = fiwCol.GenLblCompAsTxbl();
-        Grid.SetRow(lbtField, rowDefinitionsCount); // Son eklenen satıra 1. içerik
-        Grid.SetColumn(lbtField, 0); // İlk sütuna
+        FiLabel lblField = fiwCol.GenLabel();
+        Grid.SetRow(lblField, rowDefinitionsCount); // Son eklenen satıra 1. içerik
+        Grid.SetColumn(lblField, 0); // İlk sütuna
 
-        FiTextBox txbField = fiwCol.GenTxbCol(fkbForm);
+        FiTextBox txbField = fiwCol.GenTextBox(fkbForm);
         txbField.HorizontalAlignment = HorizontalAlignment.Stretch;
         Grid.SetRow(txbField, rowDefinitionsCount); // Son eklenen satıra 1. içerik
         Grid.SetColumn(txbField, 1); // İlk sütuna
 
         // Elemanları Grid'e ekle
-        gridForm.Children.Add(lbtField);
+        gridForm.Children.Add(lblField);
         gridForm.Children.Add(txbField);
       }
     }

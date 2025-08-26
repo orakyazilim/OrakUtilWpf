@@ -4,7 +4,12 @@ using System.Collections.Generic;
 
 namespace OrakUtilWpf.FiDataContainer
 {
-  public class FwcList: List<FiwCol>
+  /**
+   * Fi-Wpf-Col-List : List-FiwCol
+   *
+   * FiwCol : FiCol'a wpf le ilgili alanlar eklendi
+   */
+  public class FwcList : List<FiwCol>
   {
     public FwcList()
     {
@@ -29,10 +34,10 @@ namespace OrakUtilWpf.FiDataContainer
     }
     public FiwCol AddByFiCol(FiCol fiCol)
     {
-        FiwCol fiwCol = new FiwCol();
-        fiwCol.refFiCol = fiCol;
-        this.Add(fiwCol);
-        return fiwCol;
+      FiwCol fiwCol = new FiwCol();
+      fiwCol.refFiCol = fiCol;
+      this.Add(fiwCol);
+      return fiwCol;
     }
   }
 }
