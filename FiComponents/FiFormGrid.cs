@@ -1,4 +1,5 @@
 ﻿using OrakUtilWpf.FiDataContainer;
+using OrakYazilimLib.DbGeneric;
 using OrakYazilimLib.Util.config;
 using OrakYazilimLib.Util.core;
 using System.Windows;
@@ -80,14 +81,22 @@ namespace OrakUtilWpf.FiComponents
 
     public FiKeybean GetFormAsFkb()
     {
-      foreach (UIElement gridFormChild in this.gridForm.Children)
+      FiKeybean fkbForm2 = new FiKeybean();
+
+      foreach (FiwCol fiwcol in  fwcList)
       {
-        if (gridFormChild is FiTextBox txbField)
+        //fiwcol.
+        if (fiwcol.ifwComp == null)
         {
-          FiAppConfig.fiLog?.Debug(txbField.Name);
+          fkbForm2.AddField(fiwcol.refFiCol, fiwcol.refValue);
+          continue;
         }
+        string txValue = fiwcol.ifwComp.GetFiTxValue();
+        object objValue = FiTypeConverter.ConvertByFiCol(fiwcol.refFiCol, txValue);
+        fkbForm2.AddField(fiwcol.refFiCol, objValue);
       }
-      return fkbForm;
+
+      return fkbForm2;
     }
   }
 }

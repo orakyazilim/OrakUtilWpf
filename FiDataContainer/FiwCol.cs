@@ -16,10 +16,14 @@ namespace OrakUtilWpf.FiDataContainer
 
     public FiTextBox txbCol { get; set; }
 
+    public IFiWpfComp ifwComp { get; set; }
+
     public bool? boHiddenFormElem { get; set; }
 
     /**
     * Form Componentlerde alanın değeri
+    *
+    * hidden elementlerda değer burada tutulur
     */
     public object refValue { get; set; }
 
@@ -40,9 +44,12 @@ namespace OrakUtilWpf.FiDataContainer
       //if(txbCol != null) return txbCol;
 
       txbCol = new FiTextBox();
+      this.ifwComp = txbCol;
+
       if (fkbForm == null) return txbCol;
 
-      txbCol.Text = fkbForm.GetFieldAsString(refFiCol);;
+      txbCol.Text = fkbForm.GetFieldAsString(refFiCol);
+      ;
       return txbCol;
     }
 
