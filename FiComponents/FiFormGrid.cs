@@ -85,6 +85,8 @@ namespace OrakUtilWpf.FiComponents
 
       foreach (FiwCol fiwcol in  fwcList)
       {
+        FiAppConfig.fiLog?.Debug(FiConsole.TextAllMembers(fiwcol.refFiCol));
+        
         //fiwcol.
         if (fiwcol.ifwComp == null)
         {
