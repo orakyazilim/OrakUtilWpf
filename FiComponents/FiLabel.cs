@@ -13,6 +13,10 @@ namespace OrakUtilWpf.FiComponents
   {
     return base.Text;
   }
+  public object GetFiObjValue()
+  {
+    return null;
+  }
 
 
 

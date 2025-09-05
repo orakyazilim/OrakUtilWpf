@@ -53,6 +53,22 @@ namespace OrakUtilWpf.FiDataContainer
       return txbCol;
     }
 
+    public FiCheckBox GenCheckBox(FiKeybean fkbForm)
+    {
+      // txbCol önceden üretilmişse onu getirir
+      //if(txbCol != null) return txbCol;
+
+      //txbCol = new FiCheckBox();
+      var txbCol = new FiCheckBox();
+      this.ifwComp = txbCol;
+
+      if (fkbForm == null) return txbCol;
+
+      txbCol.IsChecked = fkbForm.GetFieldAsBool(refFiCol);
+
+      return txbCol;
+    }
+
     public FiwCol BuiBoHiddenFormElem(bool prhiddenFormElement)
     {
       this.boHiddenFormElem = prhiddenFormElement;

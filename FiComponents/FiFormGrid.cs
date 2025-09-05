@@ -67,14 +67,32 @@ namespace OrakUtilWpf.FiComponents
         Grid.SetRow(lblField, rowDefinitionsCount); // Son eklenen satıra 1. içerik
         Grid.SetColumn(lblField, 0); // İlk sütuna
 
-        FiTextBox txbField = fiwCol.GenTextBox(fkbForm);
-        txbField.HorizontalAlignment = HorizontalAlignment.Stretch;
-        Grid.SetRow(txbField, rowDefinitionsCount); // Son eklenen satıra 1. içerik
-        Grid.SetColumn(txbField, 1); // İlk sütuna
+        if (fiwCol.refFiCol.IsText())
+        {
+          FiTextBox txbField = fiwCol.GenTextBox(fkbForm);
+          txbField.HorizontalAlignment = HorizontalAlignment.Stretch;
+          Grid.SetRow(txbField, rowDefinitionsCount); // Son eklenen satıra 1. içerik
+          Grid.SetColumn(txbField, 1); // İlk sütuna
 
-        // Elemanları Grid'e ekle
-        gridForm.Children.Add(lblField);
-        gridForm.Children.Add(txbField);
+          // Elemanları Grid'e ekle
+          gridForm.Children.Add(lblField);
+          gridForm.Children.Add(txbField);
+        }
+
+        if (fiwCol.refFiCol.IsBool())
+        {
+          FiCheckBox formComp = fiwCol.GenCheckBox(fkbForm);
+          formComp.HorizontalAlignment = HorizontalAlignment.Stretch;
+          Grid.SetRow(formComp, rowDefinitionsCount); // Son eklenen satıra 1. içerik
+          Grid.SetColumn(formComp, 1); // İlk sütuna
+
+          // Elemanları Grid'e ekle
+          gridForm.Children.Add(lblField);
+          gridForm.Children.Add(formComp);
+        }
+
+
+
       }
     }
 
