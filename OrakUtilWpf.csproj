@@ -46,6 +46,7 @@
     <ItemGroup>
         <Compile Include="Class1.cs"/>
         <Compile Include="FiComponents\FiCheckBox.cs" />
+        <Compile Include="FiComponents\FiComboBox.cs" />
         <Compile Include="FiComponents\FiLabel.cs" />
         <Compile Include="FiComponents\FiTextBox.cs" />
         <Compile Include="FiComponents\FiFormGrid.cs" />

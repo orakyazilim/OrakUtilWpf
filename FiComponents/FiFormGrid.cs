@@ -91,6 +91,24 @@ namespace OrakUtilWpf.FiComponents
           gridForm.Children.Add(formComp);
         }
 
+        if (fiwCol.refFiCol.ofcTxCompType.Equals("combobox"))
+        {
+          FiComboBox formComp = new FiComboBox();  //fiwCol.GenCheckBox(fkbForm);
+
+          fiwCol.refFiCol.ofcRefFimList?.ForEach(fiMeta =>
+          {
+            formComp.Items.Add(fiMeta);
+          });
+
+          //formComp.HorizontalAlignment = HorizontalAlignment.Stretch;
+          Grid.SetRow(formComp, rowDefinitionsCount); // Son eklenen satıra 1. içerik
+          Grid.SetColumn(formComp, 1); // İlk sütuna
+
+          // Elemanları Grid'e ekle
+          gridForm.Children.Add(lblField);
+          gridForm.Children.Add(formComp);
+        }
+
 
 
       }

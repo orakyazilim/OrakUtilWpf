@@ -5,15 +5,15 @@ namespace OrakUtilWpf.FiComponents
 {
   public class MyGrid : Grid
   {
-    public string MyCustomTag
+    public string myCustomTag
     {
-      get { return (string)GetValue(MyCustomTagProperty); }
-      set { SetValue(MyCustomTagProperty, value); }
+      get { return (string)GetValue(myCustomTagProperty); }
+      set { SetValue(myCustomTagProperty, value); }
     }
 
-    public static readonly DependencyProperty MyCustomTagProperty =
+    public static readonly DependencyProperty myCustomTagProperty =
       DependencyProperty.Register(
-        nameof(MyCustomTag),
+        nameof(myCustomTag),
         typeof(string),
         typeof(MyGrid),
         new PropertyMetadata(null));
