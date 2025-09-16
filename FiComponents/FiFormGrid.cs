@@ -1,5 +1,6 @@
 ﻿using OrakUtilWpf.FiDataContainer;
 using OrakYazilimLib.DbGeneric;
+using OrakYazilimLib.FiContainer;
 using OrakYazilimLib.Util.config;
 using OrakYazilimLib.Util.core;
 using System.Windows;
@@ -22,17 +23,24 @@ namespace OrakUtilWpf.FiComponents
       // Yeni Grid nesnesi
       gridForm = new Grid()
       {
-        Margin = new Thickness(10),
-        Background = Brushes.AliceBlue
-        ,HorizontalAlignment = HorizontalAlignment.Stretch
+        Margin = new Thickness(10), Background = Brushes.AliceBlue, HorizontalAlignment = HorizontalAlignment.Stretch
 
       };
 
       // Satır ve sütunlar ekle
-      gridForm.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+      gridForm.RowDefinitions.Add(new RowDefinition()
+      {
+        Height = GridLength.Auto
+      });
       //gridForm.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
-      gridForm.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-      gridForm.ColumnDefinitions.Add(new ColumnDefinition() { MinWidth = 200.0d  });
+      gridForm.ColumnDefinitions.Add(new ColumnDefinition()
+      {
+        Width = GridLength.Auto
+      });
+      gridForm.ColumnDefinitions.Add(new ColumnDefinition()
+      {
+        MinWidth = 200.0d
+      });
       // gridForm.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
       // gridForm.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(3, GridUnitType.Star) });
 
@@ -47,9 +55,12 @@ namespace OrakUtilWpf.FiComponents
 
       foreach (FiwCol fiwCol in fwcList)
       {
+        FiAppConfig.fiLog?.Debug(fiwCol.refFiCol.ofcTxFieldName);
+        FiAppConfig.fiLog?.Debug(fiwCol.refFiCol.ofcTxCompType);
 
-        if(FiBool.IsTrue(fiwCol.boHiddenFormElem))
+        if (FiBool.IsTrue(fiwCol.boHiddenFormElem))
         {
+          FiAppConfig.fiLog?.Debug("boHiddenFormElem");
           fiwCol.refValue = fkbForm.GetFieldAsObject(fiwCol.refFiCol);
           continue;
         }
@@ -62,10 +73,53 @@ namespace OrakUtilWpf.FiComponents
         this.gridForm.RowDefinitions.Add(newRow);
 
         int rowDefinitionsCount = this.gridForm.RowDefinitions.Count - 1;
+
         // Component Grid'e yerleştirme
-        FiLabel lblField = fiwCol.GenLabel();
-        Grid.SetRow(lblField, rowDefinitionsCount); // Son eklenen satıra 1. içerik
+        //FiLabel lblField = fiwCol.GenLabel();
+        //if(lblField == null)lblField = new FiLabel("n/a");
+        TextBlock lblField = new TextBlock
+        {
+          Text = fiwCol.refFiCol.ofcTxFieldName
+        };
+        //FiAppConfig.fiLog?.Debug("null:" + (lblField == null));
+        Grid.SetRow(lblField, rowDefinitionsCount); // Son eklenen satıra
         Grid.SetColumn(lblField, 0); // İlk sütuna
+        gridForm.Children.Add(lblField);
+
+        if (fiwCol.refFiCol.IsBool())
+        {
+          //FiAppConfig.fiLog?.Debug("bool ficol");
+          FiCheckBox formComp = fiwCol.GenCheckBox(fkbForm);
+          formComp.HorizontalAlignment = HorizontalAlignment.Stretch;
+          Grid.SetRow(formComp, rowDefinitionsCount); // Son eklenen satıra 1. içerik
+          Grid.SetColumn(formComp, 1); // İlk sütuna
+
+          // Elemanları Grid'e ekle
+
+          gridForm.Children.Add(formComp);
+          continue;
+        }
+
+
+        if (fiwCol.refFiCol.ofcTxCompType is "combobox")
+        {
+          fiwCol.refValue = fkbForm.GetFieldAsObject(fiwCol.refFiCol);
+          FiComboBox combo = new FiComboBox(); //fiwCol.GenCheckBox(fkbForm);
+          //formComp.Items.Add("Seçiniz");
+          fiwCol.refFiCol.ofcRefFimList?.ForEach(fiMeta =>
+          {
+            combo.Items.Add(FiComboItem.convert(fiMeta));
+          });
+
+          //formComp.HorizontalAlignment = HorizontalAlignment.Stretch;
+          Grid.SetRow(combo, rowDefinitionsCount); // Son eklenen satıra 1. içerik
+          Grid.SetColumn(combo, 1); // İlk sütuna
+
+          // Elemanları Grid'e ekle
+          // gridForm.Children.Add(lblField);
+          gridForm.Children.Add(combo);
+          continue;
+        }
 
         if (fiwCol.refFiCol.IsText())
         {
@@ -75,38 +129,9 @@ namespace OrakUtilWpf.FiComponents
           Grid.SetColumn(txbField, 1); // İlk sütuna
 
           // Elemanları Grid'e ekle
-          gridForm.Children.Add(lblField);
+          // gridForm.Children.Add(lblField);
           gridForm.Children.Add(txbField);
-        }
-
-        if (fiwCol.refFiCol.IsBool())
-        {
-          FiCheckBox formComp = fiwCol.GenCheckBox(fkbForm);
-          formComp.HorizontalAlignment = HorizontalAlignment.Stretch;
-          Grid.SetRow(formComp, rowDefinitionsCount); // Son eklenen satıra 1. içerik
-          Grid.SetColumn(formComp, 1); // İlk sütuna
-
-          // Elemanları Grid'e ekle
-          gridForm.Children.Add(lblField);
-          gridForm.Children.Add(formComp);
-        }
-
-        if (fiwCol.refFiCol.ofcTxCompType.Equals("combobox"))
-        {
-          FiComboBox formComp = new FiComboBox();  //fiwCol.GenCheckBox(fkbForm);
-
-          fiwCol.refFiCol.ofcRefFimList?.ForEach(fiMeta =>
-          {
-            formComp.Items.Add(fiMeta);
-          });
-
-          //formComp.HorizontalAlignment = HorizontalAlignment.Stretch;
-          Grid.SetRow(formComp, rowDefinitionsCount); // Son eklenen satıra 1. içerik
-          Grid.SetColumn(formComp, 1); // İlk sütuna
-
-          // Elemanları Grid'e ekle
-          gridForm.Children.Add(lblField);
-          gridForm.Children.Add(formComp);
+          continue;
         }
 
 
@@ -119,10 +144,10 @@ namespace OrakUtilWpf.FiComponents
     {
       FiKeybean fkbForm2 = new FiKeybean();
 
-      foreach (FiwCol fiwcol in  fwcList)
+      foreach (FiwCol fiwcol in fwcList)
       {
         FiAppConfig.fiLog?.Debug(FiConsole.TextAllMembers(fiwcol.refFiCol));
-        
+
         //fiwcol.
         if (fiwcol.ifwComp == null)
         {

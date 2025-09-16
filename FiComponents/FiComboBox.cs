@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using OrakYazilimLib.FiContainer;
+using System.Windows.Controls;
 
 namespace OrakUtilWpf.FiComponents
 {
@@ -10,10 +11,18 @@ namespace OrakUtilWpf.FiComponents
     }
     public string GetFiTxValue()
     {
-      return ""; //base.IsChecked.ToString();
+      if (base.SelectedItem is FiComboItem selectedItem)
+      {
+        return selectedItem.txKey;
+      }
+      return null; //base.IsChecked.ToString();
     }
     public object GetFiObjValue()
     {
+      if (base.SelectedItem is FiComboItem selectedItem)
+      {
+        return selectedItem;
+      }
       return null; // base.IsChecked;
     }
 

@@ -4,9 +4,14 @@ namespace OrakUtilWpf.FiComponents
 {
   public class FiLabel : TextBlock, IFiWpfComp
   {
+
   public FiLabel()
   {
 
+  }
+  public FiLabel(string txLabel)
+  {
+    base.Text = txLabel;
   }
 
   public string GetFiTxValue()
