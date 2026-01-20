@@ -61,9 +61,9 @@
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\OrakYazilimLib\OrakYazilimLib.csproj">
+      <ProjectReference Include="..\OrakUtilDotNetFrm\OrakUtilDotNetFrm.csproj">
         <Project>{04d51c72-6b1a-4e0b-8e88-3ac5b4de94e6}</Project>
-        <Name>OrakYazilimLib</Name>
+        <Name>OrakUtilDotNetFrm</Name>
       </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
