@@ -1,4 +1,5 @@
-﻿using OrakYazilimLib.DbGeneric;
+﻿using OrakUtilDotNetFrm.DbGeneric;
+using OrakYazilimLib.DbGeneric;
 using System.Windows.Controls;
 using System.Windows.Data;
 

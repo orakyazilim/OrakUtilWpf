@@ -1,4 +1,5 @@
-﻿using OrakUtilWpf.FiDataContainer;
+﻿using OrakUtilDotNetFrm.DbGeneric;
+using OrakUtilWpf.FiDataContainer;
 using OrakYazilimLib.DbGeneric;
 using OrakYazilimLib.FiContainer;
 using OrakYazilimLib.Util.config;

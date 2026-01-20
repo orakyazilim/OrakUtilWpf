@@ -1,4 +1,5 @@
-﻿using OrakUtilWpf.FiComponents;
+﻿using OrakUtilDotNetFrm.DbGeneric;
+using OrakUtilWpf.FiComponents;
 using OrakYazilimLib.DbGeneric;
 using OrakYazilimLib.Util.core;
 using System.Windows.Controls;
