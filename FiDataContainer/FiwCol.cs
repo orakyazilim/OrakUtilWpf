@@ -36,7 +36,7 @@ namespace OrakUtilWpf.FiDataContainer
       //if (lblCol != null) return lblCol;
 
       lblCol = new FiLabel();
-      lblCol.Text = refFiCol.ofcTxHeader;
+      lblCol.Text = refFiCol.fcTxHeader;
       return lblCol;
     }
     public FiTextBox GenTextBox(FiKeybean fkbForm)

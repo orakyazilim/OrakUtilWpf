@@ -56,8 +56,8 @@ namespace OrakUtilWpf.FiComponents
 
       foreach (FiwCol fiwCol in fwcList)
       {
-        FiAppConfig.fiLog?.Debug(fiwCol.refFiCol.ofcTxFieldName);
-        FiAppConfig.fiLog?.Debug(fiwCol.refFiCol.ofcTxCompType);
+        FiAppConfig.fiLog?.Debug(fiwCol.refFiCol.fcTxFieldName);
+        FiAppConfig.fiLog?.Debug(fiwCol.refFiCol.fcTxCompType);
 
         if (FiBool.IsTrue(fiwCol.boHiddenFormElem))
         {
@@ -80,7 +80,7 @@ namespace OrakUtilWpf.FiComponents
         //if(lblField == null)lblField = new FiLabel("n/a");
         TextBlock lblField = new TextBlock
         {
-          Text = fiwCol.refFiCol.ofcTxFieldName
+          Text = fiwCol.refFiCol.fcTxFieldName
         };
         //FiAppConfig.fiLog?.Debug("null:" + (lblField == null));
         Grid.SetRow(lblField, rowDefinitionsCount); // Son eklenen satıra
@@ -102,12 +102,12 @@ namespace OrakUtilWpf.FiComponents
         }
 
 
-        if (fiwCol.refFiCol.ofcTxCompType is "combobox")
+        if (fiwCol.refFiCol.fcTxCompType is "combobox")
         {
           fiwCol.refValue = fkbForm.GetFieldAsObject(fiwCol.refFiCol);
           FiComboBox combo = new FiComboBox(); //fiwCol.GenCheckBox(fkbForm);
           //formComp.Items.Add("Seçiniz");
-          fiwCol.refFiCol.ofcRefFimList?.ForEach(fiMeta =>
+          fiwCol.refFiCol.fcRefFimList?.ForEach(fiMeta =>
           {
             combo.Items.Add(FiComboItem.convert(fiMeta));
           });

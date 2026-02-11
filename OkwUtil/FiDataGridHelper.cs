@@ -12,8 +12,8 @@ namespace OrakUtilWpf.FiComponents
 
       DataGridTextColumn column = new DataGridTextColumn
       {
-        Header = fiCol.ofcTxHeader,
-        Binding = new Binding($"[{fiCol.ofcTxFieldName}]")
+        Header = fiCol.fcTxHeader,
+        Binding = new Binding($"[{fiCol.fcTxFieldName}]")
       };
 
       return column;
