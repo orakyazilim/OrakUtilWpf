@@ -17,7 +17,7 @@ namespace OrakUtilWpf.FiComponents
 
     public FwcList fwcList { get; set; }
 
-    public FiKeybean fkbForm { get; set; }
+    public Fkb fkbForm { get; set; }
 
     public FiFormGrid()
     {
@@ -141,9 +141,9 @@ namespace OrakUtilWpf.FiComponents
     }
 
 
-    public FiKeybean GetFormAsFkb()
+    public Fkb GetFormAsFkb()
     {
-      FiKeybean fkbForm2 = new FiKeybean();
+      Fkb fkbForm2 = new Fkb();
 
       foreach (FiwCol fiwcol in fwcList)
       {

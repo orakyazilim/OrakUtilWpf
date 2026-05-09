@@ -39,7 +39,7 @@ namespace OrakUtilWpf.FiDataContainer
       lblCol.Text = refFiCol.fcTxHeader;
       return lblCol;
     }
-    public FiTextBox GenTextBox(FiKeybean fkbForm)
+    public FiTextBox GenTextBox(Fkb fkbForm)
     {
       // txbCol önceden üretilmişse onu getirir
       //if(txbCol != null) return txbCol;
@@ -54,7 +54,7 @@ namespace OrakUtilWpf.FiDataContainer
       return txbCol;
     }
 
-    public FiCheckBox GenCheckBox(FiKeybean fkbForm)
+    public FiCheckBox GenCheckBox(Fkb fkbForm)
     {
       // txbCol önceden üretilmişse onu getirir
       //if(txbCol != null) return txbCol;

@@ -5,7 +5,7 @@ namespace OrakUtilWpf.FiWpfExtension
 {
   public static class FiDataGridExt
   {
-    public static FiKeybean GetSelectedItemAsFkbFi(this DataGrid dataGrid)
+    public static Fkb GetSelectedItemAsFkbFi(this DataGrid dataGrid)
     {
 
       // Eğer bir satır seçiliyse SelectedItem üzerinden alınabilir
@@ -13,8 +13,8 @@ namespace OrakUtilWpf.FiWpfExtension
       // Veri bağlama nesnesini alıyoruz
       object selectedItem = dataGrid.SelectedItem;
 
-      // selectedItem FiKeybean tipinde ise, fkbSelected olarak al
-      if (selectedItem is FiKeybean fkbSelected)
+      // selectedItem Fkb tipinde ise, fkbSelected olarak al
+      if (selectedItem is Fkb fkbSelected)
       {
         return fkbSelected;
       }
